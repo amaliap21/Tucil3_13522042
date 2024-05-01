@@ -11,7 +11,6 @@ public class Main {
 
             System.out.println("Finding path from 'base' to 'root'...");
 
-            // input start and end words here
             Scanner scanner = new Scanner(System.in);
             System.out.print("Enter start word: ");
             String start = scanner.nextLine();
