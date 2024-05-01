@@ -10,4 +10,4 @@ javac -d ../bin *.java || exit
 cd ../bin || exit
 
 # Run the Java program
-java Main
+java WordLadderGUI
