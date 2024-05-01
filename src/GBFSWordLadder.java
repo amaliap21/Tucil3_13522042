@@ -7,28 +7,30 @@ public class GBFSWordLadder extends WordLadder {
         super(filename);
     }
 
-    public List<String> findLadder(String start, String end) {
-        long startTime = System.currentTimeMillis();
+    public Map<String, Object> findLadder(String start, String end) {
+        long startTime = System.currentTimeMillis(); 
 
         if (!dictionary.contains(start) || !dictionary.contains(end)) {
-            return Collections.emptyList();
+            return Collections.emptyMap(); 
         }
 
         PriorityQueue<Node> priorityQueue = new PriorityQueue<>(Comparator.comparingInt(node -> node.heuristic));
         Map<String, Boolean> visited = new HashMap<>();
         priorityQueue.add(new Node(start, null, heuristic(start, end)));
 
-        int nodesVisited = 0;
+        int nodesVisited = 0; 
 
         while (!priorityQueue.isEmpty()) {
             Node current = priorityQueue.poll();
             nodesVisited++;
 
             if (current.word.equals(end)) {
-                long endTime = System.currentTimeMillis();
-                System.out.println("Execution Time: " + (endTime - startTime) + " ms");
-                System.out.println("Nodes Visited: " + nodesVisited);
-                return reconstructPath(current);
+                long endTime = System.currentTimeMillis(); 
+                Map<String, Object> result = new HashMap<>();
+                result.put("Execution Time", (endTime - startTime) + " ms");
+                result.put("Nodes Visited", nodesVisited);
+                result.put("Path", reconstructPath(current));
+                return result;
             }
 
             if (!visited.containsKey(current.word)) {
@@ -42,9 +44,11 @@ public class GBFSWordLadder extends WordLadder {
             }
         }
 
-        long endTime = System.currentTimeMillis(); // End the timer
-        System.out.println("Execution Time: " + (endTime - startTime) + " ms");
-        System.out.println("Nodes Visited: " + nodesVisited);
-        return Collections.emptyList(); // No path found
+        long endTime = System.currentTimeMillis(); 
+        Map<String, Object> result = new HashMap<>();
+        result.put("Execution Time", (endTime - startTime) + " ms");
+        result.put("Nodes Visited", nodesVisited);
+        result.put("Path", Collections.emptyList());
+        return result; // No path found
     }
 }

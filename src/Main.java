@@ -1,5 +1,6 @@
 import java.io.FileNotFoundException;
-import java.util.List;
+// import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -8,8 +9,6 @@ public class Main {
             UCSWordLadder ladderUCS = new UCSWordLadder("dictionary.txt");
             GBFSWordLadder ladderGBFS = new GBFSWordLadder("dictionary.txt");
             AStarWordLadder ladderAStar = new AStarWordLadder("dictionary.txt");
-
-            System.out.println("Finding path from 'base' to 'root'...");
 
             Scanner scanner = new Scanner(System.in);
             System.out.print("Enter start word: ");
@@ -20,16 +19,21 @@ public class Main {
 
             scanner.close();
 
-            List<String> resultUCS = ladderUCS.findLadder(start, end);
-            List<String> resultGBFS = ladderGBFS.findLadder(start, end);
-            List<String> resultAStar = ladderAStar.findLadder(start, end);
+            System.out.println("Finding ladder from " + start + " to " + end + "...");
+
+            Map<String, Object> resultUCS = ladderUCS.findLadder(start, end);
+            Map<String, Object> resultGBFS = ladderGBFS.findLadder(start, end);
+            Map<String, Object> resultAStar = ladderAStar.findLadder(start, end);
 
             if (resultUCS.isEmpty() || resultGBFS.isEmpty() || resultAStar.isEmpty()) {
                 System.out.println("No path found.");
             } else {
-                System.out.println("Path-UCS: " + resultUCS);
-                System.out.println("Path-GBFS: " + resultGBFS);
-                System.out.println("Path-A*: " + resultAStar);
+                System.out.println("UCS: ");
+                resultUCS.forEach((key, value) -> System.out.println(key + ": " + value));
+                System.out.println("\nGBFS: ");
+                resultGBFS.forEach((key, value) -> System.out.println(key + ": " + value));
+                System.out.println("\nA-Star: ");
+                resultAStar.forEach((key, value) -> System.out.println(key + ": " + value));
             }
         } catch (FileNotFoundException e) {
             System.out.println("Dictionary file not found.");

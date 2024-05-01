@@ -6,11 +6,11 @@ public class UCSWordLadder extends WordLadder {
         super(filename);
     }
 
-    public List<String> findLadder(String start, String end) {
-        long startTime = System.currentTimeMillis();
+    public Map<String, Object> findLadder(String start, String end) {
+        long startTime = System.currentTimeMillis(); // Start timing
 
         if (!dictionary.contains(start) || !dictionary.contains(end)) {
-            return Collections.emptyList();
+            return Collections.emptyMap();
         }
 
         Queue<List<String>> queue = new LinkedList<>();
@@ -24,10 +24,12 @@ public class UCSWordLadder extends WordLadder {
             String lastWord = path.get(path.size() - 1);
 
             if (lastWord.equals(end)) {
-                long endTime = System.currentTimeMillis(); // End timing
-                System.out.println("Execution Time: " + (endTime - startTime) + " ms");
-                System.out.println("Nodes visited: " + nodesVisited);
-                return path;
+                long endTime = System.currentTimeMillis();
+                Map<String, Object> result = new HashMap<>();
+                result.put("Execution Time", (endTime - startTime) + " ms");
+                result.put("Nodes Visited", nodesVisited);
+                result.put("Path", path);
+                return result;
             }
 
             for (String word : dictionary) {
@@ -42,8 +44,10 @@ public class UCSWordLadder extends WordLadder {
         }
 
         long endTime = System.currentTimeMillis();
-        System.out.println("Time taken: " + (endTime - startTime) + " ms");
-        System.out.println("Nodes visited: " + nodesVisited);
-        return Collections.emptyList();
+        Map<String, Object> result = new HashMap<>();
+        result.put("Execution Time", (endTime - startTime) + " ms");
+        result.put("Nodes Visited", nodesVisited);
+        result.put("Path", Collections.emptyList());
+        return result; // No path found
     }
 }

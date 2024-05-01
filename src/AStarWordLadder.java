@@ -7,11 +7,11 @@ public class AStarWordLadder extends WordLadder {
         super(filename);
     }
 
-    public List<String> findLadder(String start, String end) {
-        long startTime = System.currentTimeMillis();
+    public Map<String, Object> findLadder(String start, String end) {
+        long startTime = System.currentTimeMillis(); 
 
         if (!dictionary.contains(start) || !dictionary.contains(end)) {
-            return Collections.emptyList();
+            return Collections.emptyMap(); 
         }
 
         PriorityQueue<Node> priorityQueue = new PriorityQueue<>(Comparator.comparingInt(node -> node.priority));
@@ -25,10 +25,12 @@ public class AStarWordLadder extends WordLadder {
             nodesVisited++;
 
             if (current.word.equals(end)) {
-                long endTime = System.currentTimeMillis();
-                System.out.println("Execution Time: " + (endTime - startTime) + " ms");
-                System.out.println("Nodes Visited: " + nodesVisited);
-                return reconstructPath(current);
+                long endTime = System.currentTimeMillis(); 
+                Map<String, Object> result = new HashMap<>();
+                result.put("Execution Time", (endTime - startTime) + " ms");
+                result.put("Nodes Visited", nodesVisited);
+                result.put("Path", reconstructPath(current));
+                return result;
             }
 
             for (String neighbor : dictionary) {
@@ -43,9 +45,11 @@ public class AStarWordLadder extends WordLadder {
             }
         }
 
-        long endTime = System.currentTimeMillis(); // End the timer
-        System.out.println("Execution Time: " + (endTime - startTime) + " ms");
-        System.out.println("Nodes Visited: " + nodesVisited);
-        return Collections.emptyList(); // No path found
+        long endTime = System.currentTimeMillis(); 
+        Map<String, Object> result = new HashMap<>();
+        result.put("Execution Time", (endTime - startTime) + " ms");
+        result.put("Nodes Visited", nodesVisited);
+        result.put("Path", Collections.emptyList());
+        return result; // No path found
     }
 }
