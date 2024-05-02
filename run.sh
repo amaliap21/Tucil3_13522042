@@ -1,13 +1,13 @@
 #!/bin/sh
 
-# Navigate to the src directory
+# Change directory to src
 cd src || exit
 
-# Compile Java files and put the output in the bin directory
-javac -d ../bin *.java || exit
+# Compile Java files and output class files to bin directory, including Gson jar in the classpath
+javac -cp ../gson-2.10.1.jar -d ../bin *.java || exit
 
-# Navigate to the bin directory
+# Change directory to bin
 cd ../bin || exit
 
-# Run the Java program
-java WordLadderGUI
+# Execute the DictionaryExtract class with Gson jar in the classpath
+java -cp .:../gson-2.10.1.jar DictionaryExtract
