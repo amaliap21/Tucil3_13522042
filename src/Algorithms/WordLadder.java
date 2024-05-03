@@ -5,13 +5,29 @@ import java.util.*;
 import java.io.FileNotFoundException;
 
 public class WordLadder {
+     // ANSI escape codes for colors
+     public static final String RESET = "\u001B[0m";
+     public static final String GREEN = "\u001B[32m";
+     public static final String BLUE = "\u001B[34m";
+     public static final String RED = "\u001B[31m";
+     public static final String YELLOW = "\u001B[33m";
+     public static final String CYAN = "\u001B[36m";
+ 
     protected HashSet<String> dictionary;
 
+    /**
+     * Constructor kelas WordLadder
+     * @param filename nama file yang berisi kamus kata
+     */
     public WordLadder(String filename) throws FileNotFoundException {
         dictionary = new HashSet<>();
         loadDictionary(filename);
     }
 
+    /**
+     * Method untuk memuat dictionary dari file
+     * @param filename nama file dictionary
+     */
     private void loadDictionary(String filename) throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(filename));
         while (scanner.hasNext()) {
@@ -21,6 +37,11 @@ public class WordLadder {
         scanner.close();
     }
 
+    /**
+     * Method untuk mengecek apakah dua kata berbeda satu huruf
+     * @param word1 kata pertama
+     * @param word2 kata kedua
+     */
     public boolean isOneLetterDifferent(String word1, String word2) {
         if (word1.length() != word2.length())
             return false;
@@ -35,6 +56,10 @@ public class WordLadder {
         return count == 1;
     }
 
+    /**
+     * Method untuk mendapatkan tetangga dari suatu kata
+     * @param word kata yang akan dicari tetangganya
+     */
     protected List<String> getNeighbors(String word) {
         List<String> neighbors = new ArrayList<>();
         char[] chars = word.toCharArray();
@@ -46,6 +71,8 @@ public class WordLadder {
                     continue;
                 chars[i] = c;
                 String newWord = new String(chars);
+
+                // Jika kata baru ada di dictionary, maka kata tersebut adalah tetangga
                 if (dictionary.contains(newWord)) {
                     neighbors.add(newWord);
                 }
@@ -56,6 +83,11 @@ public class WordLadder {
         return neighbors;
     }
 
+    /**
+     * Method untuk menghitung jarak antara dua kata
+     * @param current kata pertama
+     * @param goal kata kedua
+     */
     protected int heuristic(String current, String goal) {
         int distance = 0;
         for (int i = 0; i < current.length(); i++) {
@@ -66,6 +98,10 @@ public class WordLadder {
         return distance;
     }
 
+    /**
+     * Method untuk merekonstruksi path dari node akhir
+     * @param endNode node akhir
+     */
     protected List<String> reconstructPath(Node endNode) {
         List<String> path = new LinkedList<>();
         Node current = endNode;
@@ -76,21 +112,24 @@ public class WordLadder {
         return path;
     }
 
+    /**
+     * Kelas Node untuk merepresentasikan node dalam algoritma
+     */
     protected class Node {
         String word;
         Node parent;
-        int heuristic; // Used for GBFS
-        int costFromStart; // Used for A*
-        int priority; // Used for A*
+        int heuristic; // Used for GBFS -> mencari jarak dari node saat ini ke goal: h(n)
+        int costFromStart; // Used for A* -> mencari jarak dari start ke node saat ini: g(n)
+        int priority; // Used for A* -> costFromStart + heuristic: f(n) = g(n) + h(n)
 
-        // Use-defined Constructor GBFS
+        // User-defined Constructor GBFS
         public Node(String word, Node parent, int heuristic) {
             this.word = word;
             this.parent = parent;
             this.heuristic = heuristic;
         }
 
-        // Use-defined Constructor A*
+        // User-defined Constructor A*
         public Node(String word, Node parent, int costFromStart, int priority) {
             this.word = word;
             this.parent = parent;

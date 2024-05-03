@@ -10,7 +10,6 @@ import Algorithms.*;
 import java.util.List;
 
 public class WordLadderGUI extends JFrame {
-
     public static final Color customGreen = new Color(113, 188, 120);
     public static final Color customRed = new Color(224, 102, 102);
 
@@ -138,14 +137,14 @@ public class WordLadderGUI extends JFrame {
             timeExecutionLabel.setText("Execution Time: " + executionTime);
             nodesVisitedLabel.setText("Nodes Visited: " + nodesVisited);
 
-            Font customFont = new Font("Arial", Font.PLAIN, 32); // Set desired font size
+            Font customFont = new Font("Arial", Font.PLAIN, 32);
             for (String word : path) {
                 JPanel wordPanel = new JPanel(new GridLayout(1, word.length()));
-                wordPanel.setPreferredSize(new Dimension(50 * word.length(), 50)); // Adjust the size as needed
+                wordPanel.setPreferredSize(new Dimension(50 * word.length(), 50));
 
                 for (int i = 0; i < word.length(); i++) {
                     JLabel letterLabel = new JLabel(String.valueOf(word.charAt(i)), SwingConstants.CENTER);
-                    letterLabel.setFont(customFont); // Apply font size to each label
+                    letterLabel.setFont(customFont);
                     letterLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
                     if (i < end.length() && word.charAt(i) == end.charAt(i)) {

@@ -10,7 +10,9 @@ Penyelesaian Permainan Word Ladder Menggunakan Algoritma UCS, Greedy Best First 
 - [Screenshots](#screenshots)
 - [Setup dan Penggunaan](#setup-dan-penggunaan)
 - [Penulis](#penulis)
-- [Program Structure](#program-structure)
+- [Struktur Program](#struktur-program)
+- [Penjelasan Struktur Program](#penjelasan-struktur-program)
+- [Tambahan](#tambahan)
 
 ## Informasi Umum
 
@@ -43,7 +45,7 @@ Iteration/tolerance : 1
 1. Clone repositori ke lokal
 
    ```
-   git clone https://github.com/amaliap21/Tucil2_13522010_13522042.git`
+   git clone https://github.com/amaliap21/Tucil3_13522042.git
    ```
 
 2. Jalankan program
@@ -72,32 +74,47 @@ Iteration/tolerance : 1
 | :------: | :----------: |
 | 13522042 | Amalia Putri |
 
-## Program Structure
+## Struktur Program
 
 ```
 .
 └── Tucil3_13522042
    ├── bin
-   │ └── ...
+   │ ├── Algorithms
+   | ├── Dictionary
+   │ ├── Main
+   │ └── WordLadderGUI
    |
    ├── doc
    │ └── Tucil3_13522042.pdf
    |
    ├── src
-   │ ├── AStarWordLadder.java
-   | ├── .java
-   │ ├── .java
-   │ └── .java
+   │ ├── Algorithms
+   | ├── Dictionary
+   │ ├── Main
+   │ └── WordLadderGUI
    |
    ├── test
-   │ ├── Output
-   │ | ├── Brute Force
-   | | | └── ...
-   │ | └── Divide and Conquer
-   | |   └── ...
-   | |
-   | └── Input
-   |   └── ...
+   │ ├── Dictionary_Option
+   | └── Test_Case
+   │   ├── Input
+   |   └── Output
    |
    └── README.md
 ```
+
+## Penjelasan Struktur Program
+
+1. `Algorithms` : berisi kelas Uniform Cost Search Algorithm (UCS), Greedy Best First Search (GBFS), dan A\*
+2. `Dictionary` : berisi kelas Dictionary yang digunakan untuk mengekstrak dan memvalidasi kamus `dictionary-lengkap.txt` dengan API `https://api.dictionaryapi.dev/api/v2/entries/en/`
+3. `Main` : Menjalankan program utama dengan Command Line Interface (CLI)
+4. `WordLadderGUI` : Menjalankan program utama dengan Graphical User Interface (GUI)
+5. `Test_Case` : Menguji program dengan test case yang telah disediakan, baik `Input` maupun `Output`
+6. `Dictionary_Option` : Menyediakan opsi kamus yang dapat digunakan pada program
+   - `dictionary-API.txt` : kamus `dictionary-lengkap.txt` yang diekstraksi oleh API
+   - `dictionary-lengkap.txt` : kamus lengkap yang dapat digunakan pada program
+   - `dictionary-oxford.txt` : kamus oxford (kurang lengkap) yang dapat digunakan pada program
+
+## Tambahan
+
+`build.gradle`, `gson-2.10.1.jar`, dan `pom.xml` digunakan untuk membuat dictionary-API.txt
