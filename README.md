@@ -2,21 +2,21 @@
 
 Penyelesaian Permainan Word Ladder Menggunakan Algoritma UCS, Greedy Best First Search, dan A\*
 
-## Table of Contents
+## Daftar Isi
 
-- [General Information](#general-information)
-- [Technologies Used](#technologies-used)
+- [Informasi Umum](#informasi-umum)
+- [Techstack](#techstack)
 - [Features](#features)
 - [Screenshots](#screenshots)
-- [Setup and Usage](#setup-and-usage)
-- [Team Members](#team-members)
+- [Setup dan Penggunaan](#setup-dan-penggunaan)
+- [Penulis](#penulis)
 - [Program Structure](#program-structure)
 
-## General Information
+## Informasi Umum
 
 Word ladder (juga dikenal sebagai Doublets, word-links, change-the-word puzzles, paragrams, laddergrams, atau word golf) adalah salah satu permainan kata yang terkenal bagi seluruh kalangan. Word ladder ditemukan oleh Lewis Carroll, seorang penulis dan matematikawan, pada tahun 1877. Pada permainan ini, pemain diberikan dua kata yang disebut sebagai start word dan end word. Untuk memenangkan permainan, pemain harus menemukan rantai kata yang dapat menghubungkan antara start word dan end word. Banyaknya huruf pada start word dan end word selalu sama. Tiap kata yang berdekatan dalam rantai kata tersebut hanya boleh berbeda satu huruf saja. Pada permainan ini, diharapkan solusi optimal, yaitu solusi yang meminimalkan banyaknya kata yang dimasukkan pada rantai kata. Berikut adalah ilustrasi serta aturan permainan.
 
-## Technologies Used
+## Techstack
 
 Programming Language: `Java`
 
@@ -38,32 +38,39 @@ Iteration/tolerance : 1
 ![Example screenshot](./test/Comparison0.png)
 ![Example screenshot](./test/Comparison1.png)
 
-<!-- If you have screenshots you'd like to share, include them here. -->
+## Setup dan Penggunaan
 
-## Setup and Usage
-
-1. Clone the repository to your local machine
+1. Clone repositori ke lokal
 
    ```
    git clone https://github.com/amaliap21/Tucil2_13522010_13522042.git`
    ```
 
-2. Change directory to the `src` folder
+2. Jalankan program
+
+   - Windows, pada current directory `./Tucil3_13522042` jalankan file `run.bat` dengan perintah berikut:
 
    ```
-   cd src
+   ./run.bat
    ```
 
-3. Run the program
+   - Linux, pada current directory `./Tucil3_13522042` jalankan file `run.sh` dengan perintah berikut:
+
    ```
-   python main.py
+   ./run.sh
    ```
 
-## Team Members
+   `ATAU`
 
-| **NIM**  |       **Nama**        |
-| :------: | :-------------------: |
-| 13522042 |     Amalia Putri      |
+   ```
+   make all
+   ```
+
+## Penulis
+
+| **NIM**  |   **Nama**   |
+| :------: | :----------: |
+| 13522042 | Amalia Putri |
 
 ## Program Structure
 

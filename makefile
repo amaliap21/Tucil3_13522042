@@ -1,26 +1,27 @@
 # Variables
-SRC_DIR = src
-BIN_DIR = bin
-GSON_JAR = gson-2.10.1.jar
-CLASSPATH = $(BIN_DIR):$(GSON_JAR)
-JAVA_FILES = $(wildcard $(SRC_DIR)/*.java)
-MAIN_CLASS = DictionaryExtract
+SRC_DIR := src
+BIN_DIR := bin
+MAIN_SRC := Main/*.java
+ALGO_SRC := Algorithms/*.java
+GUI_SRC := WordLadderGUI/*.java
+ALGO_BIN := Algorithms/*.class
+GUI_BIN := WordLadderGUI/*.class
+MAIN_BIN := Main/*.class
 
-# Default target to compile and run the Java program
-all: $(BIN_DIR)/$(MAIN_CLASS).class
-	@echo "Running $(MAIN_CLASS)..."
-	java -cp $(CLASSPATH) $(MAIN_CLASS)
+# Default target
+all: compile run
 
-# Compile Java files
-$(BIN_DIR)/$(MAIN_CLASS).class: $(JAVA_FILES)
+# Compile target
+compile:
 	@echo "Compiling Java files..."
-	mkdir -p $(BIN_DIR)
-	javac -cp $(GSON_JAR) -d $(BIN_DIR) $(JAVA_FILES)
+	javac -d $(BIN_DIR) $(SRC_DIR)/$(GUI_SRC) $(SRC_DIR)/$(MAIN_SRC) $(SRC_DIR)/$(ALGO_SRC)
 
-# Clean up the bin directory
+# Run target
+run:
+	@echo "Running WordLadderGUI..."
+	cd $(BIN_DIR) && java WordLadderGUI.WordLadderGUI
+
+# Clean target (optional)
 clean:
 	@echo "Cleaning up..."
-	rm -rf $(BIN_DIR)/*.class
-
-# Run the Makefile with the 'clean' target first, then the default 'all' target
-rebuild: clean all
+	rm -rf $(BIN_DIR)/$(ALGO_BIN) $(BIN_DIR)/$(GUI_BIN) $(BIN_DIR)/$(MAIN_BIN)

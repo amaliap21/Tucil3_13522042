@@ -1,3 +1,5 @@
+package Algorithms;
+
 import java.io.FileNotFoundException;
 import java.util.*;
 
@@ -9,36 +11,35 @@ public class UCSWordLadder extends WordLadder {
     public Map<String, Object> findLadder(String start, String end) {
         long startTime = System.currentTimeMillis(); // Start timing
 
-        if (!dictionary.contains(start) || !dictionary.contains(end)) {
+        if (!dictionary.contains(start) || !dictionary.contains(end) || start.length() != end.length()) {
             return Collections.emptyMap();
         }
 
-        Queue<List<String>> queue = new LinkedList<>();
-        queue.add(Arrays.asList(start));
-
+        Queue<Node> priorityQueue = new PriorityQueue<>(Comparator.comparingInt(node -> node.costFromStart));
         Set<String> visited = new HashSet<>();
+        priorityQueue.add(new Node(start, null, 0, 0));
+
         int nodesVisited = 0;
 
-        while (!queue.isEmpty()) {
-            List<String> path = queue.poll();
-            String lastWord = path.get(path.size() - 1);
+        while (!priorityQueue.isEmpty()) {
+            Node current = priorityQueue.poll();
+            nodesVisited++;
 
-            if (lastWord.equals(end)) {
+            if (current.word.equals(end)) {
                 long endTime = System.currentTimeMillis();
                 Map<String, Object> result = new HashMap<>();
                 result.put("Execution Time", (endTime - startTime) + " ms");
                 result.put("Nodes Visited", nodesVisited);
-                result.put("Path", path);
+                result.put("Path", reconstructPath(current));
                 return result;
             }
 
-            for (String word : dictionary) {
-                if (!visited.contains(word) && isOneLetterDifferent(lastWord, word)) {
-                    List<String> newPath = new ArrayList<>(path);
-                    newPath.add(word);
-                    queue.add(newPath);
-                    visited.add(word);
-                    nodesVisited++;
+            visited.add(current.word);
+
+            for (String neighbor : getNeighbors(current.word)) {
+                if (!visited.contains(neighbor)) {
+                    priorityQueue.add(new Node(neighbor, current, current.costFromStart + 1, 0));
+                    visited.add(neighbor);
                 }
             }
         }

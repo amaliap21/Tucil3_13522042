@@ -1,9 +1,7 @@
-import java.io.File;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+package Algorithms;
 
+import java.io.File;
+import java.util.*;
 import java.io.FileNotFoundException;
 
 public class WordLadder {
@@ -37,9 +35,27 @@ public class WordLadder {
         return count == 1;
     }
 
-    /**
-     * 
-    */
+    protected List<String> getNeighbors(String word) {
+        List<String> neighbors = new ArrayList<>();
+        char[] chars = word.toCharArray();
+
+        for (int i = 0; i < chars.length; i++) {
+            char original = chars[i];
+            for (char c = 'a'; c <= 'z'; c++) {
+                if (c == original)
+                    continue;
+                chars[i] = c;
+                String newWord = new String(chars);
+                if (dictionary.contains(newWord)) {
+                    neighbors.add(newWord);
+                }
+            }
+            chars[i] = original;
+        }
+
+        return neighbors;
+    }
+
     protected int heuristic(String current, String goal) {
         int distance = 0;
         for (int i = 0; i < current.length(); i++) {

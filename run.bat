@@ -1,12 +1,6 @@
-@echo off
-REM Change directory to src
 cd src
-
-REM Compile Java files and output class files to bin directory, including Gson jar in the classpath
-javac -cp ..\gson-2.10.1.jar -d ..\bin *.java
-
-REM Change directory to bin
-cd ..\bin
-
-REM Execute the WordLadderGUI class with Gson jar in the classpath
-java -cp .;..\gson-2.10.1.jar DictionaryExtract
+javac -d ..\bin WordLadderGUI/*.java Main/*.java Algorithms/*.java
+cd ..
+cd bin
+@REM java Main.Main
+java WordLadderGUI.WordLadderGUI
