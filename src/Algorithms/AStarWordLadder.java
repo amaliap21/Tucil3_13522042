@@ -50,10 +50,12 @@ public class AStarWordLadder extends WordLadder {
             // Jika kata saat ini sama dengan kata akhir -> selesai
             if (current.word.equals(end)) {
                 long endTime = System.currentTimeMillis();
+                List<String> path = reconstructPath(current);
                 Map<String, Object> result = new HashMap<>();
                 result.put("Execution Time", (endTime - startTime) + " ms");
                 result.put("Nodes Visited", nodesVisited);
-                result.put("Path", reconstructPath(current));
+                result.put("Path", path);
+                result.put("Path Length", path.size());
                 return result;
             }
 
@@ -80,6 +82,7 @@ public class AStarWordLadder extends WordLadder {
         result.put("Execution Time", (endTime - startTime) + " ms");
         result.put("Nodes Visited", nodesVisited);
         result.put("Path", Collections.emptyList());
+        result.put("Path Length", 0);
         return result; // No path found
     }
 }
