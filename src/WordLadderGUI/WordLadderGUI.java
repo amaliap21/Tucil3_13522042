@@ -154,8 +154,8 @@ public class WordLadderGUI extends JFrame {
 
     @SuppressWarnings("unchecked")
     private void findLadder() {
-        String start = startField.getText().trim();
-        String end = endField.getText().trim();
+        String start = startField.getText().trim().toLowerCase();
+        String end = endField.getText().trim().toLowerCase();
         String algorithm = (String) algorithmSelection.getSelectedItem();
 
         Map<String, Object> result = null;

@@ -1,12 +1,12 @@
 # Variables
 SRC_DIR := src
 BIN_DIR := bin
-MAIN_SRC := Main/*.java
+MAIN_SRC := WordLadderCLI/*.java
 ALGO_SRC := Algorithms/*.java
 GUI_SRC := WordLadderGUI/*.java
 ALGO_BIN := Algorithms/*.class
 GUI_BIN := WordLadderGUI/*.class
-MAIN_BIN := Main/*.class
+MAIN_BIN := WordLadderCLI/*.class
 
 # Default target
 all: compile run

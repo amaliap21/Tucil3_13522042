@@ -1,10 +1,10 @@
-package Main;
+package WordLadderCLI;
 
 import Algorithms.*;
 import java.util.*;
 import java.io.FileNotFoundException;
 
-public class Main {
+public class WordLadderCLI {
     // ANSI escape codes for colors
     public static final String RESET = "\u001B[0m";
     public static final String GREEN = "\u001B[32m";
@@ -72,10 +72,10 @@ public class Main {
 
             // Masukan Start and End Word
             System.out.print(GREEN + "Masukkan Start Word: " + RESET);
-            String start = scanner.nextLine().trim();
+            String start = scanner.nextLine().trim().toLowerCase();
 
             System.out.print(GREEN + "Masukkan End Word: " + RESET);
-            String end = scanner.nextLine().trim();
+            String end = scanner.nextLine().trim().toLowerCase();
 
             // Masukan Algorithm: UCS, GBFS, atau A-Star
             System.out.print(GREEN + "Masukkan Algoritma (" + YELLOW + "UCS" + GREEN + ", " + YELLOW + "GBFS" + GREEN

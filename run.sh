@@ -1,7 +1,7 @@
 #!/bin/bash
 cd src
-javac -d ../bin WordLadderGUI/*.java Main/*.java Algorithms/*.java
+javac -d ../bin WordLadderGUI/*.java WordLadderCLI/*.java Algorithms/*.java
 cd ..
 cd bin
-# java Main.Main
+# java WordLadderCLI.WordLadderCLI
 java WordLadderGUI.WordLadderGUI

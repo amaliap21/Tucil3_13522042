@@ -36,9 +36,12 @@ Programming Language: `Java`
 
 ## Screenshots
 
-Iteration/tolerance : 1
-![Example screenshot](./test/Comparison0.png)
-![Example screenshot](./test/Comparison1.png)
+- Uniform Cost Search Algorithm (UCS)
+  ![Uniform Cost Search Algorithm (UCS)](./test/Test_Case/GUI/1-ucs.jpg)
+- Greedy Best First Search (GBFS)
+  ![Greedy Best First Search (GBFS)](./test/Test_Case/GUI/1-gbfs.jpg)
+- A-Star (A*)
+  ![A-Star (A*)](./test/Test_Case/GUI/1-astar.jpg)
 
 ## Setup dan Penggunaan
 
@@ -82,7 +85,7 @@ Iteration/tolerance : 1
    ├── bin
    │ ├── Algorithms
    | ├── Dictionary
-   │ ├── Main
+   │ ├── WordLadderCLI
    │ └── WordLadderGUI
    |
    ├── doc
@@ -91,14 +94,14 @@ Iteration/tolerance : 1
    ├── src
    │ ├── Algorithms
    | ├── Dictionary
-   │ ├── Main
+   │ ├── WordLadderCLI
    │ └── WordLadderGUI
    |
    ├── test
    │ ├── Dictionary_Option
    | └── Test_Case
-   │   ├── Input
-   |   └── Output
+   │   ├── CLI
+   |   └── GUI
    |
    └── README.md
 ```
@@ -107,13 +110,14 @@ Iteration/tolerance : 1
 
 1. `Algorithms` : berisi kelas Uniform Cost Search Algorithm (UCS), Greedy Best First Search (GBFS), dan A\*
 2. `Dictionary` : berisi kelas Dictionary yang digunakan untuk mengekstrak dan memvalidasi kamus `dictionary-lengkap.txt` dengan API `https://api.dictionaryapi.dev/api/v2/entries/en/`
-3. `Main` : Menjalankan program utama dengan Command Line Interface (CLI)
+3. `WordLadderCLI` : Menjalankan program utama dengan Command Line Interface (CLI)
 4. `WordLadderGUI` : Menjalankan program utama dengan Graphical User Interface (GUI)
 5. `Test_Case` : Menguji program dengan test case yang telah disediakan, baik `Input` maupun `Output`
 6. `Dictionary_Option` : Menyediakan opsi kamus yang dapat digunakan pada program
+   - `dictionary.txt` : kamus rujukan yang digunakan pada program
    - `dictionary-API.txt` : kamus `dictionary-lengkap.txt` yang diekstraksi oleh API
-   - `dictionary-lengkap.txt` : kamus lengkap yang dapat digunakan pada program
-   - `dictionary-oxford.txt` : kamus oxford (kurang lengkap) yang dapat digunakan pada program
+   - `dictionary-lengkap.txt` : kamus beserta kata-kata informal
+   - `dictionary-oxford.txt` : kamus oxford (kurang lengkap)
 
 ## Tambahan
 
