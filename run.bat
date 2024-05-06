@@ -2,5 +2,5 @@ cd src
 javac -d ..\bin WordLadderGUI/*.java WordLadderCLI/*.java Algorithms/*.java
 cd ..
 cd bin
-java WordLadderCLI.WordLadderCLI
-@REM java WordLadderGUI.WordLadderGUI
+@REM java WordLadderCLI.WordLadderCLI
+java WordLadderGUI.WordLadderGUI
